@@ -18,7 +18,7 @@ PHP-пакет для получения и обработки запросов 
 **Данный пакет - первый написанный мною с нуля. Прошу не сильно бить из-за ошибок и некорректного написания кода. Примеры корректного кода, советы и посильная помощь в виде пул-реквестов привествуется!**
 
 ## Установка
-Через Composer *(недоступно до публикации в Packagist)*
+Через Composer
 ``` bash
 $ composer require cjmaxik/vk-callback-api
 ```
@@ -39,7 +39,7 @@ var_export($vk->listen($callback));
 ### С секретным ключом
 ``` php
 ...
-$secretKey = 'thisisasupersecretkey';
+$secretKey = 'thisisasupersecretkey'; // Секретный ключ
 ...
 $vk = new Callback($groupId, $confirmationToken, $secretKey);
 ...
@@ -78,7 +78,7 @@ $vk = new Callback($groupId, $confirmationToken, $secretKey);
   - [ ] photos_list
   - [ ] market
   - [ ] market_album
-- [x] Работа с APi Вконтакте
+- [x] Работа с API Вконтакте
 - [ ] Тесты
 - [ ] Комментарии в коде (DocBlockr)
 - [ ] Использование для нескольких групп
