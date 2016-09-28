@@ -94,17 +94,43 @@ class Callback
             }
         }
 
+        $answer = (object)[
+            'type' => $callback_object->type,
+            'object' => NULL
+        ];
+
         switch ($callback_object->type) {
             case 'confirmation':
                 return $this->getInstanceConfirmationToken();
                 break;
 
             case 'message_new':
-                return new Types\MessageNew($callback_object->object);
+                $answer->object = new Types\MessageNew($callback_object->object, $this->instanceGroupID);
+                break;
+
+            case 'group_join':
+                $answer->object = new Types\Group\Join($callback_object->object, $this->instanceGroupID);
+                break;
+
+            case 'group_leave':
+                $answer->object = new Types\Group\Leave($callback_object->object, $this->instanceGroupID);
+                break;
+
+            case 'wall_reply_new':
+            case 'wall_reply_edit':
+                $answer->object = new Types\Wall\Reply($callback_object->object, $this->instanceGroupID);
+                break;
+
+            case 'wall_post_new':
+                $answer->object = new Types\Wall\PostNew($callback_object->object, $this->instanceGroupID);
+                break;
+
+            default:
+                $answer->object = new Types\DefaultType($callback_object->object, $this->instanceGroupID);
                 break;
         }
 
-        $this->echoObject($result);
+        return $answer;
     }
 
     public function getInstanceConfirmationToken() {

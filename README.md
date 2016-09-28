@@ -48,8 +48,8 @@ $vk = new Callback($groupId, $confirmationToken, $secretKey);
 ## Чеклист фич
 - Типы событий:
   - [x] confirmation
-  - [ ] wall_reply_new
-  - [ ] wall_reply_edit
+  - [x] wall_reply_new
+  - [x] wall_reply_edit
   - [ ] wall_post_new
   - [ ] audio_new
   - [ ] photo_new
@@ -57,14 +57,14 @@ $vk = new Callback($groupId, $confirmationToken, $secretKey);
   - [ ] video_new
   - [ ] video_comment_new
   - [x] message_new
-  - [ ] group_leave
-  - [ ] group_join
+  - [x] group_leave
+  - [x] group_join
   - [ ] board_post_new
   - [ ] board_post_edit
   - [ ] board_post_restore
   - [ ] board_post_delete
   - [ ] market_comment_new
-  - [ ] заглушка для неподдерживаемых/новых событий
+  - [X] заглушка для неподдерживаемых/новых событий
 - Типы вложений:
   - [X] photo
   - [X] video

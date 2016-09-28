@@ -21,6 +21,10 @@
         {
             $this->position = 0;
 
+            if (is_null($attachments)) {
+                return null;
+            }
+
             foreach ($attachments as $k => $attachment) {
                 switch ($attachment->type) {
                     case 'doc':

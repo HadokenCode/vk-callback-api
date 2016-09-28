@@ -39,9 +39,7 @@
             $vk = new VKQuery;
             $this->user = $vk::users_get($object->user_id);
 
-            if (isset($object->attachments)) {
-                $this->attachments = new Attachments($object->attachments);
-            };
+            $this->attachments = new Attachments($object->attachments);
 
             if (isset($object->geo)) {
                 $this->geo = (object)$object->geo;
