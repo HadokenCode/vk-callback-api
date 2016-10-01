@@ -3,19 +3,14 @@
 namespace cjmaxik\VKCallbackAPI;
 
 use cjmaxik\VKCallbackAPI\Exceptions\CallbackException;
-use cjmaxik\VKCallbackAPI\Types;
 
 /**
- * Calss Callback
+ * Calss Callback.
  *
  * Основной класс для работы с VK Callback API
- *
- * @package cjmaxik\VKCallbackAPI
  */
-
 class Callback
 {
-
     /** @var string ID группы/сообщества */
     private static $groupId = null;
     private static $instanceGroupID;
@@ -68,6 +63,7 @@ class Callback
         // TODO: Проверка строки ответа
         return true;
     }
+
     private static function validateSecretKey($confirmationToken)
     {
         // TODO: Проверка секретного ключа
@@ -76,27 +72,26 @@ class Callback
 
     public function listen($callback)
     {
-
         if (!$callback) {
-            throw new CallbackException("Пустое сообщение.");
+            throw new CallbackException('Пустое сообщение.');
         }
 
         $callback_object = json_decode($callback);
         if ($this->instanceGroupID === $callback_object->group_id) {
             //
         } else {
-            throw new CallbackException("Недействительный ID группы. Проверьте корректность инстанса.");
+            throw new CallbackException('Недействительный ID группы. Проверьте корректность инстанса.');
         }
 
         if (!is_null($this->instanceSecretKey)) {
             if ($callback_object->secret != $this->instanceSecretKey) {
-                throw new CallbackException("Не совпадает секретный ключ.");
+                throw new CallbackException('Не совпадает секретный ключ.');
             }
         }
 
-        $answer = (object)[
-            'type' => $callback_object->type,
-            'object' => NULL
+        $answer = (object) [
+            'type'   => $callback_object->type,
+            'object' => null,
         ];
 
         switch ($callback_object->type) {
@@ -133,22 +128,23 @@ class Callback
         return $answer;
     }
 
-    public function getInstanceConfirmationToken() {
+    public function getInstanceConfirmationToken()
+    {
         return $this->instanceConfirmationToken;
     }
 
     public function echoJson($json)
     {
-        return "<pre>".var_export(json_decode($json), true)."</pre>";
+        return '<pre>'.var_export(json_decode($json), true).'</pre>';
     }
 
     public function echoObject($object)
     {
-        return "<pre>".var_export($object, true)."</pre>";
+        return '<pre>'.var_export($object, true).'</pre>';
     }
 
     public function echoString($string)
     {
-        return "<pre>".$string."</pre>";
+        return '<pre>'.$string.'</pre>';
     }
 }

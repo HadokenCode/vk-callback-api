@@ -1,14 +1,13 @@
 <?php
 
-    namespace cjmaxik\VKCallbackAPI\Types;
+namespace cjmaxik\VKCallbackAPI\Types;
 
-    class DefaultType
+class DefaultType
+{
+    public $default;
+
+    public function __construct($object)
     {
-        public $default;
-
-        public function __construct($object)
-        {
-            $this->default = $object;
-        }
-
+        $this->default = $object;
     }
+}
