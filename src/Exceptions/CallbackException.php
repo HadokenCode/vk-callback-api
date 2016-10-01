@@ -3,10 +3,8 @@
 namespace cjmaxik\VKCallbackAPI\Exceptions;
 
 /**
- * Class CallbackException
- * @package cjmaxik\VKCallbackAPI\Exceptions
+ * Class CallbackException.
  */
 class CallbackException extends \Exception
 {
-
 }

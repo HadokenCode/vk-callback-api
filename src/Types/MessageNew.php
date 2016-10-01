@@ -1,16 +1,12 @@
 <?php
 
-    namespace cjmaxik\VKCallbackAPI\Types;
+namespace cjmaxik\VKCallbackAPI\Types;
 
+use cjmaxik\VKCallbackAPI\Attachments;
     use cjmaxik\VKCallbackAPI\VKQuery;
-    use cjmaxik\VKCallbackAPI\Attachments;
 
-    /**
-    *
-    */
     class MessageNew
     {
-
         public $id;
 
         public $date;
@@ -36,15 +32,13 @@
             $this->title = $object->title;
             $this->body = $object->body;
 
-            $vk = new VKQuery;
+            $vk = new VKQuery();
             $this->user = $vk::users_get($object->user_id);
 
             $this->attachments = new Attachments($object->attachments);
 
             if (isset($object->geo)) {
-                $this->geo = (object)$object->geo;
+                $this->geo = (object) $object->geo;
             }
         }
-
     }
-

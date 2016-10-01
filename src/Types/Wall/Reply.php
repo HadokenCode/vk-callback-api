@@ -1,16 +1,12 @@
 <?php
 
-    namespace cjmaxik\VKCallbackAPI\Types\Wall;
+namespace cjmaxik\VKCallbackAPI\Types\Wall;
 
+use cjmaxik\VKCallbackAPI\Attachments;
     use cjmaxik\VKCallbackAPI\VKQuery;
-    use cjmaxik\VKCallbackAPI\Attachments;
 
-    /**
-    *
-    */
     class Reply
     {
-
         public $id;
 
         public $from;
@@ -34,7 +30,7 @@
             $this->text = $object->text;
             $this->reply_to_comment = $object->reply_to_comment;
 
-            $vk = new VKQuery;
+            $vk = new VKQuery();
             $this->from = $vk->author_get($object->from_id);
             $this->reply_to_user = $vk->author_get($object->reply_to_user);
 
@@ -45,6 +41,4 @@
                 $this->link .= '?'.$object->reply_to_comment;
             }
         }
-
     }
-

@@ -1,20 +1,19 @@
 <?php
 
-    namespace cjmaxik\VKCallbackAPI\Types\Group;
+namespace cjmaxik\VKCallbackAPI\Types\Group;
 
-    use cjmaxik\VKCallbackAPI\VKQuery;
+use cjmaxik\VKCallbackAPI\VKQuery;
 
     class Join
     {
-
         public $user;
 
         public $join_type;
 
-        function __construct($object)
+        public function __construct($object)
         {
-            $vk = new VKQuery;
-            $this->user  = $vk->users_get($object->user_id);
+            $vk = new VKQuery();
+            $this->user = $vk->users_get($object->user_id);
 
             $this->join_type = $object->join_type;
         }
